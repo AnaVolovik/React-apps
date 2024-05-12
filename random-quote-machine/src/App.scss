@@ -1,0 +1,128 @@
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,*:before,*:after{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  background-color: #ECECEC;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+ }
+
+#quote-box {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #D7E1D6;
+}
+
+.quote {
+  margin-top: 55px;
+  font-size: 30px;
+}
+
+.wrapper-text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutAuthor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.wrapperImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #ECECEC;
+  background-position: center;
+  border-radius: 100%;
+  position: relative;
+  .line {
+    width: 400px;
+    height: 2px;
+    background-color: #ECECEC;
+    position: absolute;
+    top: 40px;
+    right: 120px;
+  }
+}
+
+#text {
+  width: 515px;
+  margin: 40px 0 20px 0;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: justify;
+  text-indent: 30px;
+  line-height: 150%;
+}
+
+#author {
+  width: 210px;
+  font-size: 16px;
+  text-align: left;
+  padding-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .button {
+    height: 40px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #8CAC8A;
+      transition: all 0.3s ease 0s;
+    }
+  }
+  .button-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    margin-right: 20px;
+  }
+  .button-new-quote {
+    width: 120px;
+    font-weight: 700;
+  }
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
