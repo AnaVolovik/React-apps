@@ -13,3 +13,36 @@ a:focus,a:active{outline: none;}
 a, a:visited{text-decoration: none; color: black;}
 a:hover{text-decoration: none;}
 ul li{list-style: none;}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: bisque;
+}
+
+.gamebox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1px;
+  width: 200px;
+  height: 200px;
+  padding: 1px;
+  background-color: #fff;
+  .gamebox-img {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    background-color: #fff;
+    border: 1px solid lightblue;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
