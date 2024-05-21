@@ -17,6 +17,7 @@ class App extends React.Component {
     this.generateImageArray = this.generateImageArray.bind(this);
     this.shuffleArray = this.shuffleArray.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
+    this.fireworkContainerRef = React.createRef();
   }
 
   componentDidMount() {
@@ -38,7 +39,20 @@ class App extends React.Component {
   }
 
   generateImageArray() {
-    const images = ['/images/0.jpg', '/images/1.jpg'];
+    const images = [
+      '/images/0.jpg',
+      '/images/1.jpg',
+      '/images/2.jpg',
+      '/images/3.jpg',
+      '/images/4.jpg',
+      '/images/5.jpg',
+      '/images/6.jpg',
+      '/images/7.jpg',
+      '/images/8.jpg',
+      '/images/9.jpg',
+      '/images/10.jpg',
+      '/images/11.jpg'
+    ];
     const doubledImages = [...images, ...images];
     return this.shuffleArray(doubledImages);
   }
@@ -53,17 +67,18 @@ class App extends React.Component {
 
   handleImageClick(key) {
     this.setState(prevState => {
+      
       const index = prevState.keys.indexOf(key);
       const newFlipped = [...prevState.flipped];
       const newSelectedCards = [...prevState.selectedCards];
-
+  
       if (newFlipped[index] || newSelectedCards.length === 2) {
         return null;
       }
 
       newFlipped[index] = true;
       newSelectedCards.push(index);
-
+  
       if (newSelectedCards.length === 2) {
         const [firstIndex, secondIndex] = newSelectedCards;
         if (prevState.images[firstIndex] !== prevState.images[secondIndex]) {
@@ -82,12 +97,46 @@ class App extends React.Component {
           newSelectedCards.length = 0;
         }
       }
-
       return {
         flipped: newFlipped,
         selectedCards: newSelectedCards
       };
+    }, () => {
+      this.checkForWin();
     });
+  }
+
+  checkForWin() {
+    if (this.state.flipped.every(flip => flip)) {
+      this.triggerFireworks();
+    }
+  }
+
+  triggerFireworks() {
+    const container = this.fireworkContainerRef.current;
+
+    container.style.display = 'block';
+
+    for (let i = 0; i < 50; i++) {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+
+      const left = Math.random() * window.innerWidth;
+      const top = Math.random() * window.innerHeight;
+
+      firework.style.left = `${left}px`;
+      firework.style.top = `${top}px`;
+
+      container.appendChild(firework);
+      
+      setTimeout(() => {
+        firework.remove();
+      }, 1000);
+    }
+
+    setTimeout(() => {
+      container.style.display = 'none';
+    }, 1400);
   }
 
   render() {
@@ -99,6 +148,7 @@ class App extends React.Component {
 
     return(
       <div className='app'>
+        <button className='button-newgame' onClick={this.handleOnload}>New Game</button>
         <GameBox 
           images={images}
           flipped={flipped}
@@ -106,6 +156,7 @@ class App extends React.Component {
           keys={keys}
           onImageClick={this.handleImageClick}
         />
+        <div ref={this.fireworkContainerRef} className="firework-container"></div>
       </div>
     );
   }

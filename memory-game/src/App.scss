@@ -16,21 +16,34 @@ ul li{list-style: none;}
 
 .app {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0 auto;
   padding: 20px;
-  background-color: bisque;
+  background-color: #daffc4;
+  .button-newgame {
+    width: 160px;
+    height: 50px;
+    margin: 40px auto;
+    background-color: white;
+    border: 2px solid #3ac8c4;
+    border-radius: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #eea0ae;
+    cursor: pointer;
+  }
 }
 
 .gamebox {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-gap: 1px;
-  width: 200px;
-  height: 200px;
-  padding: 1px;
+  width: 600px;
+  height: auto;
+  padding: 10px;
   background-color: #fff;
   .gamebox-img {
     position: relative;
@@ -44,5 +57,37 @@ ul li{list-style: none;}
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+.firework-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+  z-index: 9999;
+}
+
+.firework {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: blue;
+  animation: explode 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 0;
   }
 }
