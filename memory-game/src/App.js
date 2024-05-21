@@ -148,6 +148,7 @@ class App extends React.Component {
 
     return(
       <div className='app'>
+        <h1>Memory Game</h1>
         <button className='button-newgame' onClick={this.handleOnload}>New Game</button>
         <GameBox 
           images={images}
@@ -157,6 +158,9 @@ class App extends React.Component {
           onImageClick={this.handleImageClick}
         />
         <div ref={this.fireworkContainerRef} className="firework-container"></div>
+        <h4>
+          <a href='https://codepen.io/ana_volovik'>by Anastasia Volovik</a>
+        </h4>
       </div>
     );
   }
